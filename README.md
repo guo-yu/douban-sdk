@@ -4,13 +4,22 @@ a simple douban sdk, including douban.fm apis.
 
 ### Installation
 ````
-$ [sudo] npm install douban-sdk
+$ npm install douban-sdk
 ````
-
 
 ### Example
 ````javascript
-var douban-sdk = require('douban-sdk');
+var Douban = require('douban-sdk');
+var douban = new Douban();
+
+douban.fm.auth({
+  form: {
+    email: 'xxx',
+    password: 'xxx'
+  }
+}, function(err, res, body){
+  // ...
+})
 ````
 
 ### API
