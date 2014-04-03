@@ -1,0 +1,27 @@
+{
+  "name": "douban-sdk",
+  "version": "0.0.1",
+  "description": "a simple douban sdk, including douban.fm apis.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/turingou/douban-sdk.git"
+  },
+  "keywords": [
+    "douban",
+    "douban.fm",
+    "fm"
+  ],
+  "author": "turing <o.u.turing@Gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/turingou/douban-sdk/issues"
+  },
+  "homepage": "https://github.com/turingou/douban-sdk",
+  "dependencies": {
+    "sdk": "git://github.com/turingou/sdk.git"
+  }
+}
