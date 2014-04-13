@@ -7,8 +7,9 @@ var host = 'http://www.douban.com';
 module.exports = Douban;
 
 function Douban(configs) {
-  this.configs = configs;
+  var self = this;
+  self.configs = configs;
   Object.keys(apis).forEach(function(catagory) {
-    this[catagory] = new SDK(host, apis[catagory], rules[catagory]);
+    self[catagory] = new SDK(host, apis[catagory], rules[catagory]);
   });
 }
