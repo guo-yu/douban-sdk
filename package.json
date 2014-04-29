@@ -15,13 +15,13 @@
     "douban.fm",
     "fm"
   ],
-  "author": "turing <o.u.turing@Gmail.com>",
+  "author": "turing <o.u.turing@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/turingou/douban-sdk/issues"
   },
   "homepage": "https://github.com/turingou/douban-sdk",
   "dependencies": {
-    "sdk": "git://github.com/turingou/sdk.git"
+    "sdk": "0.0.x"
   }
 }
