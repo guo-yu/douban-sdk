@@ -1,7 +1,6 @@
 var SDK = require('sdk');
 var apis = require('./apis');
 var rules = require('./rules');
-var errors = require('./errors');
 var host = 'http://www.douban.com';
 
 module.exports = Douban;
