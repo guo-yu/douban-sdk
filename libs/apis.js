@@ -5,6 +5,7 @@ exports.fm = {
     method: 'post',
     url: '/j/app/login',
     callback: function(err, res, result, next) {
+      if (err) return next(err, res);
       if (result.r == 0) return next(null, result);
       return next(errors[result.err]);
     }
@@ -12,6 +13,7 @@ exports.fm = {
   songs: {
     url: '/j/app/radio/people',
     callback: function(err, res, result, next) {
+      if (err) return next(err, res);
       if (result.r == 0) return next(null, result.song, result);
       return next(result.err);
     }
@@ -19,6 +21,7 @@ exports.fm = {
   channels: {
     url:'/j/app/radio/channels',
     callback: function(err, res, result, next) {
+      if (err) return next(err, res);
       if (!result.channels) return next(new Error(result.err));
       return next(null, result.channels);
     }
