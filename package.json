@@ -5,7 +5,7 @@
   "main": "dist/douban.js",
   "scripts": {
     "build": "node_modules/.bin/babel libs --out-dir dist --source-maps --watch",
-    "test": "node_modules/mocha/bin/mocha tests/*.js --require tests/babelhook"
+    "test": "node_modules/.bin/mocha tests/*.js --require tests/babelhook"
   },
   "repository": {
     "type": "git",
@@ -23,9 +23,11 @@
   },
   "homepage": "https://github.com/turingou/douban-sdk",
   "dependencies": {
-    "sdk": "0.4.0"
+    "sdk": "0.4.1"
   },
   "devDependencies": {
-    "babel": "^5.8.3"
+    "babel": "^5.8.3",
+    "mocha": "^2.2.5",
+    "should": "^7.0.2"
   }
 }

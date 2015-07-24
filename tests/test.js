@@ -1,31 +1,49 @@
-var Douban = require('../index');
-var douban = new Douban;
-var should = require("should");
+import should from 'should'
+import douban from '../dist/douban'
 
-describe('FM API', function() {
-  describe('#auth', function() {
-    it('假账户应无法正确进行登录授权', function(done) {
-      douban.fm.auth({
+describe('doubanFM', () => {
+  describe('#auth', () => {
+    it('it should not return success a fake account', function(done) {
+      this.timeout(8000)
+
+      const query = {
         form: {
           email: 'fakeemail@douban.com',
           password: 123123123123
         }
-      }, function(err, res, body){
-        if (err) return done(err);
-        // 这里要找出douban.fm授权失败的code代码
-        body.err.should.not.equal(0);
-        done();
-      });
-    });
-  });
-  describe('#channels', function() {
-    it('正确返回频道歌曲信息', function(done){
-      douban.fm.channels({}, function(err, res, body){
-        if (err) return done(err);
-        var result = body.songs;
-        // 这里要找出一个频道最后返回的频道数目和相应的列表（16个似乎？）是否对应。
-        result.length.should.above(0);
-      });
-    });
+      }
+
+      douban.fm.auth(query)
+        .then(() => {
+          done(new Error('WFT?'))
+        })
+        .catch(err => done())
+    })
   })
-});
+
+  describe('#songs', () => {
+    it('should return a correct a song object from a exist channel', function(done){
+      this.timeout(8000)
+
+      // 这里要找出一个频道最后返回的频道数目和相应的列表（16个似乎？）是否对应。
+      douban.fm.songs().then(({ body }) =>{
+        done()
+      })
+      .catch(done)
+    })
+  })
+
+  describe('#channels', () => {
+    it('should return a correct a channels list', function(done){
+      this.timeout(8000)
+
+      // 这里要找出一个频道最后返回的频道数目和相应的列表（16个似乎？）是否对应。
+      douban.fm.channels().then(({ body }) => {
+        body.should.be.instanceOf(Array)
+        body.length.should.above(0)
+        done()
+      })
+      .catch(done)
+    })
+  })
+})
