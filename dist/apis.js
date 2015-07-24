@@ -41,8 +41,33 @@ var fm = {
   /**
   *
   * @query: 
+  *   none
+  *   
+  * @return
+  *   [{
+  *     name,
+  *     seq_id, <Int>
+  *     abbr_en,
+  *     channel_id <Int>
+  *     name_en
+  *   }]
+  *
+  **/
+  channels: {
+    url: '/j/app/radio/channels',
+    callback: function callback(res, body, next) {
+      if (!body.channels) return next(new Error(body.err));
+
+      return next(null, body.channels);
+    }
+  },
+
+  /**
+  *
+  * @query: 
   *   app_name: radio_desktop_win,
   *   version: 100,
+  *   channel: channel_id
   *   type: 需要调用的接口类型，也是使用下表的报告类型
   *     b: bye，不再播放，并放回一个新的歌曲列表, with sid
   *     e: end，当前歌曲播放完毕，但是歌曲队列中还有歌曲. with sid
@@ -58,7 +83,6 @@ var fm = {
   *   token,
   *   sid, 在需要针对单曲操作时需要
   *   h, 最近播放列表 单次报告曲目播放状态，其格式是 |sid:报告类型|sid:报告类型,
-  *   channel: 
   *   
   * @return
   *   {
@@ -92,30 +116,6 @@ var fm = {
       if (body.r != 0) return next(body.err);
 
       return next(null, body.song);
-    }
-  },
-
-  /**
-  *
-  * @query: 
-  *   none
-  *   
-  * @return
-  *   [{
-  *     name,
-  *     seq_id, <Int>
-  *     abbr_en,
-  *     channel_id <Int>
-  *     name_en
-  *   }]
-  *
-  **/
-  channels: {
-    url: '/j/app/radio/channels',
-    callback: function callback(res, body, next) {
-      if (!body.channels) return next(new Error(body.err));
-
-      return next(null, body.channels);
     }
   }
 };

@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/turingou/douban-sdk",
   "dependencies": {
+    "bluebird": "^2.9.34",
     "sdk": "0.4.1"
   },
   "devDependencies": {

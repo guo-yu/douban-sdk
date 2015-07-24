@@ -2,7 +2,6 @@ const headers = {
   'User-Agent': 'douban.fm'
 }
 
-// get had a `type: 'n'`
 export const fm = {
   get: {
     headers,

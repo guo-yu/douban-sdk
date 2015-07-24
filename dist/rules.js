@@ -7,7 +7,6 @@ var headers = {
   'User-Agent': 'douban.fm'
 };
 
-// get had a `type: 'n'`
 var fm = {
   get: {
     headers: headers,
