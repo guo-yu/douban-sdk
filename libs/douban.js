@@ -1,14 +1,15 @@
-var SDK = require('sdk');
-var apis = require('./apis');
-var rules = require('./rules');
-var host = 'http://www.douban.com';
+import SDK from 'sdk'
+import * as apis from './apis'
+import * as rules from './rules'
 
-module.exports = Douban;
+let sdk = {}
 
-function Douban(configs) {
-  var self = this;
-  self.configs = configs;
-  Object.keys(apis).forEach(function(catagory) {
-    self[catagory] = new SDK(host, apis[catagory], rules[catagory]);
-  });
-}
+Object.keys(apis).forEach(catagory => {
+  sdk[catagory] = new SDK(
+    'http://www.douban.com', 
+    apis[catagory], 
+    rules[catagory]
+  )
+})
+
+export default sdk

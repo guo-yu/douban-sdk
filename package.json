@@ -1,8 +1,12 @@
 {
   "name": "douban-sdk",
   "version": "0.1.0",
-  "description": "a simple douban sdk, including douban.fm apis.",
-  "main": "index.js",
+  "description": "a simple douban.com SDK",
+  "main": "dist/douban.js",
+  "scripts": {
+    "build": "node_modules/.bin/babel libs --out-dir dist --source-maps --watch",
+    "test": "node_modules/mocha/bin/mocha tests/*.js --require tests/babelhook"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/turingou/douban-sdk.git"
@@ -19,6 +23,9 @@
   },
   "homepage": "https://github.com/turingou/douban-sdk",
   "dependencies": {
-    "sdk": "~0.1.1"
+    "sdk": "0.4.0"
+  },
+  "devDependencies": {
+    "babel": "^5.8.3"
   }
 }
